@@ -3,8 +3,6 @@ bots/
 plugins/
 data/
 
-lib/
-
 HELP.md
 .gradle
 build/

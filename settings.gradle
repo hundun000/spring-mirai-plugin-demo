@@ -8,4 +8,4 @@
  */
 
 rootProject.name = 'spring-mirai-plugin-demo'
-include('lib')
+
