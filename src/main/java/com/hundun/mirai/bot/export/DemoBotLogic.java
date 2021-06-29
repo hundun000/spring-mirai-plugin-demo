@@ -22,27 +22,26 @@ public class DemoBotLogic implements ListenerHost {
     
     JvmPlugin parent;
     
-    AnnotationConfigApplicationContext springContext;
+    AnnotationConfigApplicationContext context;
     
     public DemoBotLogic(JvmPlugin plugin) {
         this.parent = plugin;
         
-        try {
-            SpringContextLoaderThread thread = new SpringContextLoaderThread(this.getClass());
-            thread.start();
-            thread.join();
-            this.springContext = thread.context;
-            parent.getLogger().info("ApplicationContext created, has beans = " + Arrays.toString(this.springContext.getBeanDefinitionNames()));
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        context = new AnnotationConfigApplicationContext();
+        context.setClassLoader(this.getClass().getClassLoader());
+        context.scan("com.hundun.mirai.bot");
+        context.refresh();
+        parent.getLogger().info("ApplicationContext created, has beans = " + Arrays.toString(context.getBeanDefinitionNames()));
+
     }
     
     @NotNull
     @EventHandler
     public ListeningStatus onMessage(@NotNull GroupMessageEvent event) throws Exception { 
-        DemoBean bean = springContext.getBean(DemoBean.class);
-        event.getGroup().sendMessage(bean.service());
+        if (event.getMessage().contentToString().equals("test")) {
+            DemoBean bean = context.getBean(DemoBean.class);
+            event.getGroup().sendMessage(bean.service());
+        }
         return ListeningStatus.LISTENING;
     }
     

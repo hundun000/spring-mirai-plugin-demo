@@ -51,7 +51,6 @@ test {
 
 dependencies {
 
-    implementation("org.springframework:spring-web:${springCoreVersion}")
     implementation("org.springframework:spring-context:${springCoreVersion}")
 
 }
