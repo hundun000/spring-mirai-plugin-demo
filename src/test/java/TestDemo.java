@@ -9,7 +9,7 @@ import net.mamoe.mirai.console.terminal.MiraiConsoleTerminalLoader;
  * @author hundun
  * Created on 2021/06/03
  */
-public class Test {
+public class TestDemo {
     public static void main(String[] args) throws InterruptedException {
         MiraiConsoleTerminalLoader.INSTANCE.startAsDaemon(new MiraiConsoleImplementationTerminal());
         

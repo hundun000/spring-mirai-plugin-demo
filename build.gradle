@@ -1,6 +1,8 @@
 buildscript {
     ext {
-        springCoreVersion = '5.1.2.RELEASE'
+        springCoreVersion = '5.3.8'
+        springDataVersion = '3.2.2'
+        springDataJpaVersion = '2.5.2'
     }
     repositories {
         mavenCentral()
@@ -52,7 +54,10 @@ test {
 dependencies {
 
     implementation("org.springframework:spring-context:${springCoreVersion}")
-
+    
+    implementation group: 'org.mongodb', name: 'mongodb-driver-sync', version: '4.2.3'
+    implementation("org.springframework.data:spring-data-mongodb:${springDataVersion}")
+    implementation("org.springframework.data:spring-data-jpa:${springDataJpaVersion}")
 }
 
 

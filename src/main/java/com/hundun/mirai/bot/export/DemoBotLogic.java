@@ -5,7 +5,8 @@ import java.util.Arrays;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-
+import com.hundun.mirai.bot.configuration.MiraiAdaptedApplicationContext;
+import com.hundun.mirai.bot.service.DemoService;
 
 import net.mamoe.mirai.console.plugin.jvm.JvmPlugin;
 import net.mamoe.mirai.event.EventHandler;
@@ -22,25 +23,28 @@ public class DemoBotLogic implements ListenerHost {
     
     JvmPlugin parent;
     
-    AnnotationConfigApplicationContext context;
+    DemoService service;
     
     public DemoBotLogic(JvmPlugin plugin) {
         this.parent = plugin;
         
-        context = new AnnotationConfigApplicationContext();
-        context.setClassLoader(this.getClass().getClassLoader());
-        context.scan("com.hundun.mirai.bot");
-        context.refresh();
+        @SuppressWarnings("resource")
+        MiraiAdaptedApplicationContext context = new MiraiAdaptedApplicationContext();
+        this.service = context.getBean(DemoService.class);
+        
+        // show spring is work
         parent.getLogger().info("ApplicationContext created, has beans = " + Arrays.toString(context.getBeanDefinitionNames()));
-
+        parent.getLogger().info(service.check());
+        
     }
+
     
     @NotNull
     @EventHandler
     public ListeningStatus onMessage(@NotNull GroupMessageEvent event) throws Exception { 
+        // use service for event
         if (event.getMessage().contentToString().equals("test")) {
-            DemoBean bean = context.getBean(DemoBean.class);
-            event.getGroup().sendMessage(bean.service());
+            event.getGroup().sendMessage(service.work());
         }
         return ListeningStatus.LISTENING;
     }
