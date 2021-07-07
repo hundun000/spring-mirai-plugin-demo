@@ -1,4 +1,4 @@
-package com.hundun.mirai.bot.db;
+package com.hundun.mirai.springplugindemo.bot.db;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

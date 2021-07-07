@@ -1,9 +1,9 @@
-package com.hundun.mirai.bot.service;
+package com.hundun.mirai.springplugindemo.bot.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hundun.mirai.bot.db.DemoRepository;
+import com.hundun.mirai.springplugindemo.bot.db.DemoRepository;
 
 import net.mamoe.mirai.message.data.Message;
 

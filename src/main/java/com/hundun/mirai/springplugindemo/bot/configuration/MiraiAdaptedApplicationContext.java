@@ -1,4 +1,4 @@
-package com.hundun.mirai.bot.configuration;
+package com.hundun.mirai.springplugindemo.bot.configuration;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -11,7 +11,7 @@ public class MiraiAdaptedApplicationContext extends AnnotationConfigApplicationC
     public MiraiAdaptedApplicationContext() {
         super();
         this.setClassLoader(this.getClass().getClassLoader());
-        this.scan("com.hundun.mirai.bot");
+        this.scan("com.hundun.mirai.springplugindemo.bot");
         this.refresh();
     }
 }

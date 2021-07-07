@@ -1,6 +1,6 @@
 
 
-import com.hundun.mirai.plugin.export.DemoPlugin;
+import com.hundun.mirai.springplugindemo.plugin.export.DemoPlugin;
 
 import net.mamoe.mirai.console.plugin.PluginManager;
 import net.mamoe.mirai.console.terminal.MiraiConsoleImplementationTerminal;

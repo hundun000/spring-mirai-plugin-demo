@@ -1,4 +1,4 @@
-package com.hundun.mirai.bot.db;
+package com.hundun.mirai.springplugindemo.bot.db;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
