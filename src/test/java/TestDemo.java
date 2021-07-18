@@ -1,6 +1,6 @@
 
 
-import com.hundun.mirai.plugin.export.DemoPlugin;
+import org.example.mirai.plugin.DemoPlugin;
 
 import net.mamoe.mirai.console.plugin.PluginManager;
 import net.mamoe.mirai.console.terminal.MiraiConsoleImplementationTerminal;

@@ -1,4 +1,4 @@
-package com.hundun.mirai.bot.configuration;
+package org.example.mirai.bot.configuration;
 
 
 import org.springframework.context.annotation.Configuration;
@@ -12,12 +12,12 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
  * Created on 2021/07/01
  */
 @Configuration
-@EnableMongoRepositories(basePackages = "com.hundun.mirai.bot")
+@EnableMongoRepositories(basePackages = "org.example.mirai.bot")
 public class MongoConfiguration extends AbstractMongoClientConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "demo";
+        return "mirai-example";
     }
     
     

@@ -1,12 +1,11 @@
-package com.hundun.mirai.bot.export;
+package org.example.mirai.bot.export;
 
 import java.util.Arrays;
 
+import org.example.mirai.bot.configuration.MiraiAdaptedApplicationContext;
+import org.example.mirai.bot.service.DemoService;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import com.hundun.mirai.bot.configuration.MiraiAdaptedApplicationContext;
-import com.hundun.mirai.bot.service.DemoService;
 
 import net.mamoe.mirai.console.plugin.jvm.JvmPlugin;
 import net.mamoe.mirai.event.EventHandler;
@@ -29,11 +28,12 @@ public class DemoBotLogic implements ListenerHost {
         this.parent = plugin;
         
         @SuppressWarnings("resource")
-        MiraiAdaptedApplicationContext context = new MiraiAdaptedApplicationContext();
-        this.service = context.getBean(DemoService.class);
-        
-        // show spring is work
+        MiraiAdaptedApplicationContext context = new MiraiAdaptedApplicationContext(false);
+        // show context is work
         parent.getLogger().info("ApplicationContext created, has beans = " + Arrays.toString(context.getBeanDefinitionNames()));
+        
+        // use bean
+        this.service = context.getBean(DemoService.class);
         parent.getLogger().info(service.check());
         
     }

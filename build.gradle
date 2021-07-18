@@ -25,7 +25,7 @@ apply plugin: 'java-library'
 
 
 
-group = 'com.mirai.hundun'
+group = 'example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 

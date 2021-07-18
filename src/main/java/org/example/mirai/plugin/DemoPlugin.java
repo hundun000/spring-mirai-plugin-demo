@@ -1,8 +1,7 @@
-package com.hundun.mirai.plugin.export;
+package org.example.mirai.plugin;
 
+import org.example.mirai.bot.export.DemoBotLogic;
 import org.jetbrains.annotations.NotNull;
-
-import com.hundun.mirai.bot.export.DemoBotLogic;
 
 import net.mamoe.mirai.console.extension.PluginComponentStorage;
 import net.mamoe.mirai.console.plugin.jvm.JavaPlugin;
@@ -24,12 +23,8 @@ public class DemoPlugin extends JavaPlugin {
     }
     
     @Override
-    public void onLoad(@NotNull PluginComponentStorage $this$onLoad) {
-        botLogic = new DemoBotLogic(this);
-    }
-    
-    @Override
     public void onEnable() {
+        botLogic = new DemoBotLogic(this);
         GlobalEventChannel.INSTANCE.registerListenerHost(botLogic);
     }
 
