@@ -1,4 +1,4 @@
-package org.example.mirai.bot.db;
+package org.example.mirai.botlogic.db;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

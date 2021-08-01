@@ -1,4 +1,4 @@
-package org.example.mirai.bot.db;
+package org.example.mirai.botlogic.db;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

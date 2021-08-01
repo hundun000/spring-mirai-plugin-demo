@@ -1,4 +1,4 @@
-package org.example.mirai.bot.configuration;
+package org.example.mirai.botlogic.configuration;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -16,7 +16,7 @@ public class MiraiAdaptedApplicationContext extends AnnotationConfigApplicationC
         this.setClassLoader(this.getClass().getClassLoader());
         // can add more scanBasePackage
         this.scan(
-                "org.example.mirai.bot"
+                "org.example.mirai.botlogic"
                 );
         if (!lateRefresh) {
             this.refresh();

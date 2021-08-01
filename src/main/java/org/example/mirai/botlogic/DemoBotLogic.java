@@ -1,13 +1,11 @@
-package org.example.mirai.bot.export;
+package org.example.mirai.botlogic;
 
 import java.util.Arrays;
 
-import org.example.mirai.bot.configuration.MiraiAdaptedApplicationContext;
-import org.example.mirai.bot.service.DemoService;
+import org.example.mirai.botlogic.configuration.MiraiAdaptedApplicationContext;
+import org.example.mirai.botlogic.service.DemoService;
+import org.example.mirai.plugin.DemoPlugin;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
-import net.mamoe.mirai.console.plugin.jvm.JvmPlugin;
 import net.mamoe.mirai.event.EventHandler;
 import net.mamoe.mirai.event.ListenerHost;
 import net.mamoe.mirai.event.ListeningStatus;
@@ -20,22 +18,25 @@ import net.mamoe.mirai.event.events.GroupMessageEvent;
  */
 public class DemoBotLogic implements ListenerHost {
     
-    JvmPlugin parent;
+    DemoPlugin plugin;
     
     DemoService service;
     
-    public DemoBotLogic(JvmPlugin plugin) {
-        this.parent = plugin;
+    public DemoBotLogic(DemoPlugin plugin) {
+        this.plugin = plugin;
         
         @SuppressWarnings("resource")
-        MiraiAdaptedApplicationContext context = new MiraiAdaptedApplicationContext(false);
+        MiraiAdaptedApplicationContext context = new MiraiAdaptedApplicationContext(true);
+        // can add more bean to context
+        context.registerBean(DemoPlugin.class, () -> plugin);
+        context.refresh();
+        
         // show context is work
-        parent.getLogger().info("ApplicationContext created, has beans = " + Arrays.toString(context.getBeanDefinitionNames()));
+        plugin.getLogger().info("ApplicationContext created, has beans = " + Arrays.toString(context.getBeanDefinitionNames()));
         
         // use bean
         this.service = context.getBean(DemoService.class);
-        parent.getLogger().info(service.check());
-        
+        plugin.getLogger().info(service.checkIoc());
     }
 
     

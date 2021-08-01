@@ -1,10 +1,8 @@
-package org.example.mirai.bot.service;
+package org.example.mirai.botlogic.service;
 
-import org.example.mirai.bot.db.DemoRepository;
+import org.example.mirai.botlogic.db.DemoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import net.mamoe.mirai.message.data.Message;
 
 /**
  * @author hundun
@@ -15,7 +13,7 @@ public class DemoService {
     @Autowired
     DemoRepository repository;
     
-    public String check() {
+    public String checkIoc() {
         return "my repository " + (repository == null ? "is " : "is not ") + "null";
     }
 
